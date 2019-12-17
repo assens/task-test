@@ -1,0 +1,34 @@
+spring:
+  jmx:
+    enabled: true
+  main:
+    banner-mode: off
+    lazy-initialization: true
+    log-startup-info: true
+    allow-bean-definition-overriding: false
+    web-application-type: servlet
+  task:
+    execution:
+      thread-name-prefix: test-taks-
+      shutdown:
+        await-termination: true
+        await-termination-period: 5s
+      pool:
+        core-size: 2
+        max-size: 5
+        keep-alive: 20s
+        queue-capacity: 20
+    scheduling:
+      thread-name-prefix: test-sched-
+      shutdown:
+        await-termination: true
+        await-termination-period: 5s
+      pool:
+        size: 2
+---
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
